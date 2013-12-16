@@ -1,13 +1,13 @@
 //
-//  CorePitch.m
+//  CPPitch.m
 //  CorePitch
 //
 //  Created by Tobias Kräntzer on 16.12.13.
 //  Copyright (c) 2013 Tobias Kräntzer. All rights reserved.
 //
 
-#import "CorePitch.h"
+#import "CPPitch.h"
 
-@implementation CorePitch
+@implementation CPPitch
 
 @end
