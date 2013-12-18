@@ -119,19 +119,24 @@
     
     NSMutableSet *pitches = [NSMutableSet set];
     
+    // Convert to db
+    Float32 one = 1;
+    vDSP_vdbcon(_magnitudes, 1, &one, _magnitudes, 1, NumberOfProcessingSamples/2, 0);
+    
     // Get the index of the bin with the highest frequency
     float maxValue;
     vDSP_Length index;
     
     vDSP_maxvi(_magnitudes, 1, &maxValue, &index, NumberOfProcessingSamples/2);
+
     
     // Print magnitudes
-    #if 1
-    printf("/n");
-    for (int i = 0; i < NumberOfProcessingSamples / 2; i++) {
+    #if 0
+    printf("\n");
+    for (int i = 0; i < MIN(300, NumberOfProcessingSamples / 2); i++) {
         float m = _magnitudes[i];
         printf("%4d ", i);
-        int x = (m / maxValue) * 80;
+        int x = (m / maxValue) * 150;
         for (int xi = 0; xi < x; xi++) {
             printf(".");
         }
