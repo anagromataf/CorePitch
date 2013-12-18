@@ -47,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		F64672F2186241990076B8AB /* CPPitchManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchManagerTests.m; sourceTree = "<group>"; };
+		F64672F4186245DC0076B8AB /* CPPitch+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPPitch+Private.h"; sourceTree = "<group>"; };
 		F663BD0E185F56D100A79558 /* libCorePitch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCorePitch.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F663BD11185F56D100A79558 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F663BD15185F56D100A79558 /* CorePitch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CorePitch-Prefix.pch"; sourceTree = "<group>"; };
@@ -131,6 +132,7 @@
 				F663BD3A185F66CD00A79558 /* CPEvent.h */,
 				F663BD3B185F66CD00A79558 /* CPEvent.m */,
 				F663BD3D185F66E600A79558 /* CPPitch.h */,
+				F64672F4186245DC0076B8AB /* CPPitch+Private.h */,
 				F663BD3E185F66E600A79558 /* CPPitch.m */,
 				F663BD14185F56D100A79558 /* Supporting Files */,
 			);

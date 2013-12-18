@@ -7,7 +7,26 @@
 //
 
 #import "CPPitch.h"
+#import "CPPitch+Private.h"
 
 @implementation CPPitch
+
+
+@end
+
+#pragma mark -
+
+@implementation CPPitch (Private)
+
+#pragma mark Life-cycle
+
+- (id)initWithFrequency:(double)frequency
+{
+    self = [super init];
+    if (self) {
+        _frequency = frequency;
+    }
+    return self;
+}
 
 @end

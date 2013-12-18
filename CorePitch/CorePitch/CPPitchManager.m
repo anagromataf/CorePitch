@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Tobias Kräntzer. All rights reserved.
 //
 
+#import "CPPitch+Private.h"
+
 #import "CPPitchManager.h"
 #import "CPPitchManager+Private.h"
 
@@ -29,7 +31,9 @@
 
 - (NSSet *)processSamples:(AudioBuffer)samples
 {
-    return nil;
+    NSMutableSet *pitches = [NSMutableSet set];
+    [pitches addObject:[[CPPitch alloc] initWithFrequency:440.0]];
+    return pitches;
 }
 
 #pragma mark Handle Pitch Event
