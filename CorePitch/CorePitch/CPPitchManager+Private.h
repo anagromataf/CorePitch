@@ -13,9 +13,6 @@
 @interface CPPitchManager (Private)
 
 #pragma mark Process Samples
-- (void)processSamples:(AudioBuffer)samples;
-
-#pragma mark Handle Pitch Event
-- (void)handleEvent:(CPEvent *)event;
+- (NSSet *)processSamples:(AudioBuffer)samples;
 
 @end

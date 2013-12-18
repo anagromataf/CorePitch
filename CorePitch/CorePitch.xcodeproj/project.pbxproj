@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F64672F3186241990076B8AB /* CPPitchManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F64672F2186241990076B8AB /* CPPitchManagerTests.m */; };
 		F663BD12185F56D100A79558 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F663BD11185F56D100A79558 /* Foundation.framework */; };
 		F663BD17185F56D100A79558 /* CorePitch.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F663BD16185F56D100A79558 /* CorePitch.h */; };
 		F663BD20185F56D100A79558 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F663BD1F185F56D100A79558 /* XCTest.framework */; };
@@ -14,7 +15,6 @@
 		F663BD23185F56D100A79558 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F663BD22185F56D100A79558 /* UIKit.framework */; };
 		F663BD26185F56D100A79558 /* libCorePitch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F663BD0E185F56D100A79558 /* libCorePitch.a */; };
 		F663BD2C185F56D100A79558 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F663BD2A185F56D100A79558 /* InfoPlist.strings */; };
-		F663BD2E185F56D100A79558 /* CorePitchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F663BD2D185F56D100A79558 /* CorePitchTests.m */; };
 		F663BD39185F5F0A00A79558 /* CPPitchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F663BD38185F5F0A00A79558 /* CPPitchManager.m */; };
 		F663BD3C185F66CD00A79558 /* CPEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = F663BD3B185F66CD00A79558 /* CPEvent.m */; };
 		F663BD3F185F66E600A79558 /* CPPitch.m in Sources */ = {isa = PBXBuildFile; fileRef = F663BD3E185F66E600A79558 /* CPPitch.m */; };
@@ -46,6 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F64672F2186241990076B8AB /* CPPitchManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchManagerTests.m; sourceTree = "<group>"; };
 		F663BD0E185F56D100A79558 /* libCorePitch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCorePitch.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F663BD11185F56D100A79558 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F663BD15185F56D100A79558 /* CorePitch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CorePitch-Prefix.pch"; sourceTree = "<group>"; };
@@ -55,7 +56,6 @@
 		F663BD22185F56D100A79558 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		F663BD29185F56D100A79558 /* CorePitchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CorePitchTests-Info.plist"; sourceTree = "<group>"; };
 		F663BD2B185F56D100A79558 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F663BD2D185F56D100A79558 /* CorePitchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CorePitchTests.m; sourceTree = "<group>"; };
 		F663BD37185F5F0A00A79558 /* CPPitchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPitchManager.h; sourceTree = "<group>"; };
 		F663BD38185F5F0A00A79558 /* CPPitchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchManager.m; sourceTree = "<group>"; };
 		F663BD3A185F66CD00A79558 /* CPEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPEvent.h; sourceTree = "<group>"; };
@@ -148,8 +148,8 @@
 		F663BD27185F56D100A79558 /* CorePitchTests */ = {
 			isa = PBXGroup;
 			children = (
-				F663BD2D185F56D100A79558 /* CorePitchTests.m */,
 				F663BD28185F56D100A79558 /* Supporting Files */,
+				F64672F2186241990076B8AB /* CPPitchManagerTests.m */,
 			);
 			path = CorePitchTests;
 			sourceTree = "<group>";
@@ -255,7 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F663BD2E185F56D100A79558 /* CorePitchTests.m in Sources */,
+				F64672F3186241990076B8AB /* CPPitchManagerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

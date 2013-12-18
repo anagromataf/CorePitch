@@ -27,9 +27,9 @@
 
 #pragma mark Process Samples
 
-- (void)processSamples:(AudioBuffer)samples
+- (NSSet *)processSamples:(AudioBuffer)samples
 {
-    
+    return nil;
 }
 
 #pragma mark Handle Pitch Event
