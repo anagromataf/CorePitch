@@ -10,4 +10,6 @@
 
 @interface CPPitch : NSObject
 
+@property (nonatomic, readonly) double frequency;
+
 @end
