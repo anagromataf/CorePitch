@@ -49,12 +49,13 @@
 
 #pragma mark Life-cycle
 
-- (id)initWithFrequency:(double)frequency amplitude:(double)amplitude
+- (id)initWithFrequency:(double)frequency amplitude:(double)amplitude phase:(CPPitchPhase)phase
 {
     self = [super init];
     if (self) {
         _frequency = frequency;
         _amplitude = amplitude;
+        _phase = phase;
         _key = 12 * log2(_frequency / 127.09) + 28.5;
     }
     return self;

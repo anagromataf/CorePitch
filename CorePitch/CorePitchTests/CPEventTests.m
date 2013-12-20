@@ -22,7 +22,7 @@
 - (void)testEvent
 {
     NSMutableSet *pitches = [[NSMutableSet alloc] init];
-    [pitches addObject:[[CPPitch alloc] initWithFrequency:440.0 amplitude:1]];
+    [pitches addObject:[[CPPitch alloc] initWithFrequency:440.0 amplitude:1 phase:CPPitchPhaseStationary]];
     
     NSTimeInterval timestamp = [[NSProcessInfo processInfo] systemUptime];
     

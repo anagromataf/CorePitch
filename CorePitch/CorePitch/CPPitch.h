@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, CPPitchPhase) {
-    CPPitchBegan,
-    CPPitchChanged,
-    CPPitchStationary,
-    CPPitchEnded
+    CPPitchPhaseBegan,
+    CPPitchPhaseChanged,
+    CPPitchPhaseStationary,
+    CPPitchPhaseEnded
 };
 
 typedef NS_ENUM(NSUInteger, CPPitchStepType) {

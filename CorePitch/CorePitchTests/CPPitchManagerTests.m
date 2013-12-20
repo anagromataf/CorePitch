@@ -6,13 +6,24 @@
 //  Copyright (c) 2013 Tobias Kräntzer. All rights reserved.
 //
 
+#define HC_SHORTHAND
+#import <OCHamcrest/OCHamcrest.h>
+
+#define MOCKITO_SHORTHAND
+#import <OCMockito/OCMockito.h>
+
 #import <XCTest/XCTest.h>
 #import <CoreAudio/CoreAudioTypes.h>
 
 #import "CPPitchManager.h"
 #import "CPPitchManager+Private.h"
+#import "CPPitchManager+EventHandling.h"
 
 #import "CPPitch.h"
+#import "CPPitch+Private.h"
+
+#import "CPEvent.h"
+#import "CPEvent+Private.h"
 
 @interface CPPitchManagerTests : XCTestCase {
     AudioBuffer _buffer;
@@ -38,7 +49,7 @@
     [super tearDown];
 }
 
-#pragma mark Tests
+#pragma mark Tests | Signal Processing
 
 - (void)testSimpleSignal
 {
@@ -51,6 +62,23 @@
     
     CPPitch *pitch = [pitches anyObject];
     XCTAssertEqualWithAccuracy(pitch.frequency, 440.0, 0.1);
+}
+
+#pragma mark Tests | Event Handling
+
+- (void)testHandleEvent
+{
+    CPPitch *pitch = [[CPPitch alloc] initWithFrequency:440.0 amplitude:1 phase:CPPitchPhaseBegan];
+    CPEvent *event = [[CPEvent alloc] initWithTimestamp:[[NSProcessInfo processInfo] systemUptime]
+                                                pitches:[NSSet setWithObject:pitch]];
+    
+    id <CPPitchManagerDelegate> delegate = mockProtocol(@protocol(CPPitchManagerDelegate));
+    
+    self.pitchManager.delegate = delegate;
+    
+    [self.pitchManager handleEvent:event];
+    
+    [verifyCount(delegate, times(1)) pitchManager:self.pitchManager pitchesBegan:[NSSet setWithObject:pitch] withEvent:event];
 }
 
 #pragma mark -
