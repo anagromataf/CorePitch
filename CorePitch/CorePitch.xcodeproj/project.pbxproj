@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F61FD3B71864588000C9C39B /* CPPitchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F61FD3B61864588000C9C39B /* CPPitchTests.m */; };
 		F61FD3BB18646D2300C9C39B /* CPPitchManager+EventHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = F61FD3BA18646D2300C9C39B /* CPPitchManager+EventHandling.m */; };
+		F61FD3BD186482A800C9C39B /* CPEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F61FD3BC186482A800C9C39B /* CPEventTests.m */; };
 		F64672F3186241990076B8AB /* CPPitchManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F64672F2186241990076B8AB /* CPPitchManagerTests.m */; };
 		F64672F8186247410076B8AB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F64672F7186247410076B8AB /* Accelerate.framework */; };
 		F663BD12185F56D100A79558 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F663BD11185F56D100A79558 /* Foundation.framework */; };
@@ -53,6 +54,8 @@
 		F61FD3B61864588000C9C39B /* CPPitchTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchTests.m; sourceTree = "<group>"; };
 		F61FD3B918646D2300C9C39B /* CPPitchManager+EventHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPPitchManager+EventHandling.h"; sourceTree = "<group>"; };
 		F61FD3BA18646D2300C9C39B /* CPPitchManager+EventHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CPPitchManager+EventHandling.m"; sourceTree = "<group>"; };
+		F61FD3BC186482A800C9C39B /* CPEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPEventTests.m; sourceTree = "<group>"; };
+		F61FD3BE186498A000C9C39B /* CPEvent+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPEvent+Private.h"; sourceTree = "<group>"; };
 		F64672F2186241990076B8AB /* CPPitchManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchManagerTests.m; sourceTree = "<group>"; };
 		F64672F4186245DC0076B8AB /* CPPitch+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPPitch+Private.h"; sourceTree = "<group>"; };
 		F64672F7186247410076B8AB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -143,6 +146,7 @@
 				F61FD3B918646D2300C9C39B /* CPPitchManager+EventHandling.h */,
 				F61FD3BA18646D2300C9C39B /* CPPitchManager+EventHandling.m */,
 				F663BD3A185F66CD00A79558 /* CPEvent.h */,
+				F61FD3BE186498A000C9C39B /* CPEvent+Private.h */,
 				F663BD3B185F66CD00A79558 /* CPEvent.m */,
 				F663BD3D185F66E600A79558 /* CPPitch.h */,
 				F64672F4186245DC0076B8AB /* CPPitch+Private.h */,
@@ -165,6 +169,7 @@
 			children = (
 				F64672F2186241990076B8AB /* CPPitchManagerTests.m */,
 				F61FD3B61864588000C9C39B /* CPPitchTests.m */,
+				F61FD3BC186482A800C9C39B /* CPEventTests.m */,
 				F663BD28185F56D100A79558 /* Supporting Files */,
 			);
 			path = CorePitchTests;
@@ -274,6 +279,7 @@
 			files = (
 				F64672F3186241990076B8AB /* CPPitchManagerTests.m in Sources */,
 				F61FD3B71864588000C9C39B /* CPPitchTests.m in Sources */,
+				F61FD3BD186482A800C9C39B /* CPEventTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

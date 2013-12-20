@@ -7,7 +7,26 @@
 //
 
 #import "CPEvent.h"
+#import "CPEvent+Private.h"
 
 @implementation CPEvent
+
+@end
+
+#pragma mark -
+
+@implementation CPEvent (Private)
+
+#pragma mark Life-cycle
+
+- (id)initWithTimestamp:(NSTimeInterval)timestamp pitches:(NSSet *)pitches
+{
+    self = [super init];
+    if (self) {
+        _timestamp = timestamp;
+        _allPitches = [pitches copy];
+    }
+    return self;
+}
 
 @end
