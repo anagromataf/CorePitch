@@ -158,11 +158,4 @@
     return pitches;
 }
 
-#pragma mark Handle Pitch Event
-
-- (void)handleEvent:(CPEvent *)event
-{
-    
-}
-
 @end

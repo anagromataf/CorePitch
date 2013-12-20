@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F61FD3B71864588000C9C39B /* CPPitchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F61FD3B61864588000C9C39B /* CPPitchTests.m */; };
+		F61FD3BB18646D2300C9C39B /* CPPitchManager+EventHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = F61FD3BA18646D2300C9C39B /* CPPitchManager+EventHandling.m */; };
 		F64672F3186241990076B8AB /* CPPitchManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F64672F2186241990076B8AB /* CPPitchManagerTests.m */; };
 		F64672F8186247410076B8AB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F64672F7186247410076B8AB /* Accelerate.framework */; };
 		F663BD12185F56D100A79558 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F663BD11185F56D100A79558 /* Foundation.framework */; };
@@ -50,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		F61FD3B61864588000C9C39B /* CPPitchTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchTests.m; sourceTree = "<group>"; };
+		F61FD3B918646D2300C9C39B /* CPPitchManager+EventHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPPitchManager+EventHandling.h"; sourceTree = "<group>"; };
+		F61FD3BA18646D2300C9C39B /* CPPitchManager+EventHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CPPitchManager+EventHandling.m"; sourceTree = "<group>"; };
 		F64672F2186241990076B8AB /* CPPitchManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchManagerTests.m; sourceTree = "<group>"; };
 		F64672F4186245DC0076B8AB /* CPPitch+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPPitch+Private.h"; sourceTree = "<group>"; };
 		F64672F7186247410076B8AB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -135,8 +138,10 @@
 			children = (
 				F663BD16185F56D100A79558 /* CorePitch.h */,
 				F663BD37185F5F0A00A79558 /* CPPitchManager.h */,
-				F663BD40185F685100A79558 /* CPPitchManager+Private.h */,
 				F663BD38185F5F0A00A79558 /* CPPitchManager.m */,
+				F663BD40185F685100A79558 /* CPPitchManager+Private.h */,
+				F61FD3B918646D2300C9C39B /* CPPitchManager+EventHandling.h */,
+				F61FD3BA18646D2300C9C39B /* CPPitchManager+EventHandling.m */,
 				F663BD3A185F66CD00A79558 /* CPEvent.h */,
 				F663BD3B185F66CD00A79558 /* CPEvent.m */,
 				F663BD3D185F66E600A79558 /* CPPitch.h */,
@@ -257,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F663BD39185F5F0A00A79558 /* CPPitchManager.m in Sources */,
+				F61FD3BB18646D2300C9C39B /* CPPitchManager+EventHandling.m in Sources */,
 				F663BD3C185F66CD00A79558 /* CPEvent.m in Sources */,
 				F663BD3F185F66E600A79558 /* CPPitch.m in Sources */,
 			);
