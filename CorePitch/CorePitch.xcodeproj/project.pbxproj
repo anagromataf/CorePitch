@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F61FD3B71864588000C9C39B /* CPPitchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F61FD3B61864588000C9C39B /* CPPitchTests.m */; };
 		F64672F3186241990076B8AB /* CPPitchManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F64672F2186241990076B8AB /* CPPitchManagerTests.m */; };
 		F64672F8186247410076B8AB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F64672F7186247410076B8AB /* Accelerate.framework */; };
 		F663BD12185F56D100A79558 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F663BD11185F56D100A79558 /* Foundation.framework */; };
@@ -48,6 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F61FD3B61864588000C9C39B /* CPPitchTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchTests.m; sourceTree = "<group>"; };
 		F64672F2186241990076B8AB /* CPPitchManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchManagerTests.m; sourceTree = "<group>"; };
 		F64672F4186245DC0076B8AB /* CPPitch+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPPitch+Private.h"; sourceTree = "<group>"; };
 		F64672F7186247410076B8AB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -156,8 +158,9 @@
 		F663BD27185F56D100A79558 /* CorePitchTests */ = {
 			isa = PBXGroup;
 			children = (
-				F663BD28185F56D100A79558 /* Supporting Files */,
 				F64672F2186241990076B8AB /* CPPitchManagerTests.m */,
+				F61FD3B61864588000C9C39B /* CPPitchTests.m */,
+				F663BD28185F56D100A79558 /* Supporting Files */,
 			);
 			path = CorePitchTests;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F64672F3186241990076B8AB /* CPPitchManagerTests.m in Sources */,
+				F61FD3B71864588000C9C39B /* CPPitchTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
