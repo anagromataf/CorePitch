@@ -10,4 +10,10 @@
 
 @interface CPEvent : NSObject
 
+#pragma mark Getting Event Attributes
+@property (nonatomic, readonly) NSTimeInterval timestamp;
+
+#pragma mark Getting the Pitches for an Event
+@property (nonatomic, readonly) NSSet *allPitches;
+
 @end

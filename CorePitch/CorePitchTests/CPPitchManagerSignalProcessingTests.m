@@ -6,6 +6,12 @@
 //  Copyright (c) 2013 Tobias Kräntzer. All rights reserved.
 //
 
+#define HC_SHORTHAND
+#import <OCHamcrest/OCHamcrest.h>
+
+#define MOCKITO_SHORTHAND
+#import <OCMockito/OCMockito.h>
+
 #import <XCTest/XCTest.h>
 #import <CoreAudio/CoreAudioTypes.h>
 
@@ -13,14 +19,18 @@
 #import "CPPitchManager+Private.h"
 
 #import "CPPitch.h"
+#import "CPPitch+Private.h"
 
-@interface CPPitchManagerTests : XCTestCase {
+#import "CPEvent.h"
+#import "CPEvent+Private.h"
+
+@interface CPPitchManagerSignalProcessingTests : XCTestCase {
     AudioBuffer _buffer;
 }
 @property (nonatomic, strong) CPPitchManager *pitchManager;
 @end
 
-@implementation CPPitchManagerTests
+@implementation CPPitchManagerSignalProcessingTests
 
 - (void)setUp
 {

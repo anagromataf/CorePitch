@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0452A92F770E43E68AC8C78E /* libPods-CorePitchTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8AA58FA0A045E385932253 /* libPods-CorePitchTests.a */; };
 		F61FD3B71864588000C9C39B /* CPPitchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F61FD3B61864588000C9C39B /* CPPitchTests.m */; };
-		F64672F3186241990076B8AB /* CPPitchManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F64672F2186241990076B8AB /* CPPitchManagerTests.m */; };
+		F61FD3BB18646D2300C9C39B /* CPPitchManager+EventHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = F61FD3BA18646D2300C9C39B /* CPPitchManager+EventHandling.m */; };
+		F61FD3BD186482A800C9C39B /* CPEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F61FD3BC186482A800C9C39B /* CPEventTests.m */; };
+		F64672F3186241990076B8AB /* CPPitchManagerSignalProcessingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F64672F2186241990076B8AB /* CPPitchManagerSignalProcessingTests.m */; };
 		F64672F8186247410076B8AB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F64672F7186247410076B8AB /* Accelerate.framework */; };
 		F663BD12185F56D100A79558 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F663BD11185F56D100A79558 /* Foundation.framework */; };
 		F663BD17185F56D100A79558 /* CorePitch.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F663BD16185F56D100A79558 /* CorePitch.h */; };
@@ -23,6 +26,7 @@
 		F663BD44185F68A400A79558 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F663BD43185F68A400A79558 /* CoreAudio.framework */; };
 		F663BD45185F691100A79558 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F663BD43185F68A400A79558 /* CoreAudio.framework */; };
 		F66D01941862478200D8AC5B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F64672F7186247410076B8AB /* Accelerate.framework */; };
+		F6E52E77186751C600F3CDAB /* CPPitchManagerEventHandlingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6E52E76186751C600F3CDAB /* CPPitchManagerEventHandlingTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +53,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9F8AA58FA0A045E385932253 /* libPods-CorePitchTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CorePitchTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9C8135D25984F9B8CF6198E /* Pods-CorePitchTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CorePitchTests.xcconfig"; path = "../Pods/Pods-CorePitchTests.xcconfig"; sourceTree = "<group>"; };
 		F61FD3B61864588000C9C39B /* CPPitchTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchTests.m; sourceTree = "<group>"; };
-		F64672F2186241990076B8AB /* CPPitchManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchManagerTests.m; sourceTree = "<group>"; };
+		F61FD3B918646D2300C9C39B /* CPPitchManager+EventHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPPitchManager+EventHandling.h"; sourceTree = "<group>"; };
+		F61FD3BA18646D2300C9C39B /* CPPitchManager+EventHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CPPitchManager+EventHandling.m"; sourceTree = "<group>"; };
+		F61FD3BC186482A800C9C39B /* CPEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPEventTests.m; sourceTree = "<group>"; };
+		F61FD3BE186498A000C9C39B /* CPEvent+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPEvent+Private.h"; sourceTree = "<group>"; };
+		F64672F2186241990076B8AB /* CPPitchManagerSignalProcessingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchManagerSignalProcessingTests.m; sourceTree = "<group>"; };
 		F64672F4186245DC0076B8AB /* CPPitch+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPPitch+Private.h"; sourceTree = "<group>"; };
 		F64672F7186247410076B8AB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		F663BD0E185F56D100A79558 /* libCorePitch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCorePitch.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +80,7 @@
 		F663BD3E185F66E600A79558 /* CPPitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitch.m; sourceTree = "<group>"; };
 		F663BD40185F685100A79558 /* CPPitchManager+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPPitchManager+Private.h"; sourceTree = "<group>"; };
 		F663BD43185F68A400A79558 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		F6E52E76186751C600F3CDAB /* CPPitchManagerEventHandlingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchManagerEventHandlingTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +104,7 @@
 				F663BD20185F56D100A79558 /* XCTest.framework in Frameworks */,
 				F663BD26185F56D100A79558 /* libCorePitch.a in Frameworks */,
 				F663BD23185F56D100A79558 /* UIKit.framework in Frameworks */,
+				0452A92F770E43E68AC8C78E /* libPods-CorePitchTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +118,7 @@
 				F663BD27185F56D100A79558 /* CorePitchTests */,
 				F663BD10185F56D100A79558 /* Frameworks */,
 				F663BD0F185F56D100A79558 /* Products */,
+				C9C8135D25984F9B8CF6198E /* Pods-CorePitchTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +139,7 @@
 				F663BD11185F56D100A79558 /* Foundation.framework */,
 				F663BD1F185F56D100A79558 /* XCTest.framework */,
 				F663BD22185F56D100A79558 /* UIKit.framework */,
+				9F8AA58FA0A045E385932253 /* libPods-CorePitchTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -135,9 +149,12 @@
 			children = (
 				F663BD16185F56D100A79558 /* CorePitch.h */,
 				F663BD37185F5F0A00A79558 /* CPPitchManager.h */,
-				F663BD40185F685100A79558 /* CPPitchManager+Private.h */,
 				F663BD38185F5F0A00A79558 /* CPPitchManager.m */,
+				F663BD40185F685100A79558 /* CPPitchManager+Private.h */,
+				F61FD3B918646D2300C9C39B /* CPPitchManager+EventHandling.h */,
+				F61FD3BA18646D2300C9C39B /* CPPitchManager+EventHandling.m */,
 				F663BD3A185F66CD00A79558 /* CPEvent.h */,
+				F61FD3BE186498A000C9C39B /* CPEvent+Private.h */,
 				F663BD3B185F66CD00A79558 /* CPEvent.m */,
 				F663BD3D185F66E600A79558 /* CPPitch.h */,
 				F64672F4186245DC0076B8AB /* CPPitch+Private.h */,
@@ -158,8 +175,10 @@
 		F663BD27185F56D100A79558 /* CorePitchTests */ = {
 			isa = PBXGroup;
 			children = (
-				F64672F2186241990076B8AB /* CPPitchManagerTests.m */,
+				F6E52E76186751C600F3CDAB /* CPPitchManagerEventHandlingTests.m */,
+				F64672F2186241990076B8AB /* CPPitchManagerSignalProcessingTests.m */,
 				F61FD3B61864588000C9C39B /* CPPitchTests.m */,
+				F61FD3BC186482A800C9C39B /* CPEventTests.m */,
 				F663BD28185F56D100A79558 /* Supporting Files */,
 			);
 			path = CorePitchTests;
@@ -198,9 +217,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F663BD34185F56D100A79558 /* Build configuration list for PBXNativeTarget "CorePitchTests" */;
 			buildPhases = (
+				1BC3235D5B3442E689811377 /* Check Pods Manifest.lock */,
 				F663BD1A185F56D100A79558 /* Sources */,
 				F663BD1B185F56D100A79558 /* Frameworks */,
 				F663BD1C185F56D100A79558 /* Resources */,
+				6A6F31B3D1F741FAAB56A85C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,12 +272,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1BC3235D5B3442E689811377 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6A6F31B3D1F741FAAB56A85C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Pods-CorePitchTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F663BD0A185F56D100A79558 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F663BD39185F5F0A00A79558 /* CPPitchManager.m in Sources */,
+				F61FD3BB18646D2300C9C39B /* CPPitchManager+EventHandling.m in Sources */,
 				F663BD3C185F66CD00A79558 /* CPEvent.m in Sources */,
 				F663BD3F185F66E600A79558 /* CPPitch.m in Sources */,
 			);
@@ -266,8 +321,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F64672F3186241990076B8AB /* CPPitchManagerTests.m in Sources */,
+				F64672F3186241990076B8AB /* CPPitchManagerSignalProcessingTests.m in Sources */,
+				F6E52E77186751C600F3CDAB /* CPPitchManagerEventHandlingTests.m in Sources */,
 				F61FD3B71864588000C9C39B /* CPPitchTests.m in Sources */,
+				F61FD3BD186482A800C9C39B /* CPEventTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +446,7 @@
 		};
 		F663BD35185F56D100A79558 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9C8135D25984F9B8CF6198E /* Pods-CorePitchTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -403,6 +461,13 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "CorePitchTests/CorePitchTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -410,6 +475,7 @@
 		};
 		F663BD36185F56D100A79558 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9C8135D25984F9B8CF6198E /* Pods-CorePitchTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -420,6 +486,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CorePitch/CorePitch-Prefix.pch";
 				INFOPLIST_FILE = "CorePitchTests/CorePitchTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
