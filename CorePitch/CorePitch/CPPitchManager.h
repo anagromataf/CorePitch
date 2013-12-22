@@ -18,7 +18,6 @@
 - (void)pitchManager:(CPPitchManager *)pitchManager pitchesBegan:(NSSet *)pitches withEvent:(CPEvent *)event;
 - (void)pitchManager:(CPPitchManager *)pitchManager pitchesChanged:(NSSet *)pitches withEvent:(CPEvent *)event;
 - (void)pitchManager:(CPPitchManager *)pitchManager pitchesEnded:(NSSet *)pitches withEvent:(CPEvent *)event;
-- (void)pitchManager:(CPPitchManager *)pitchManager pitchesCancelled:(NSSet *)pitches withEvent:(CPEvent *)event;
 
 @end
 

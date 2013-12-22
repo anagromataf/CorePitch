@@ -17,13 +17,34 @@
 
 - (void)handleEvent:(CPEvent *)event
 {
+    // Handle CPPitchPhaseBegan
     if ([self.delegate respondsToSelector:@selector(pitchManager:pitchesBegan:withEvent:)]) {
-        
         NSSet *pitches = [event.allPitches filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(CPPitch *pitch, NSDictionary *bindings) {
             return pitch.phase == CPPitchPhaseBegan;
         }]];
-        
-        [self.delegate pitchManager:self pitchesBegan:pitches withEvent:event];
+        if ([pitches count] > 0) {
+            [self.delegate pitchManager:self pitchesBegan:pitches withEvent:event];
+        }
+    }
+    
+    // Handle CPPitchPhaseChanged
+    if ([self.delegate respondsToSelector:@selector(pitchManager:pitchesChanged:withEvent:)]) {
+        NSSet *pitches = [event.allPitches filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(CPPitch *pitch, NSDictionary *bindings) {
+            return pitch.phase == CPPitchPhaseChanged;
+        }]];
+        if ([pitches count] > 0) {
+            [self.delegate pitchManager:self pitchesChanged:pitches withEvent:event];
+        }
+    }
+    
+    // Handle CPPitchPhaseEnded
+    if ([self.delegate respondsToSelector:@selector(pitchManager:pitchesEnded:withEvent:)]) {
+        NSSet *pitches = [event.allPitches filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(CPPitch *pitch, NSDictionary *bindings) {
+            return pitch.phase == CPPitchPhaseEnded;
+        }]];
+        if ([pitches count] > 0) {
+            [self.delegate pitchManager:self pitchesEnded:pitches withEvent:event];
+        }
     }
 }
 
