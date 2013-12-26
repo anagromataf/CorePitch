@@ -41,6 +41,31 @@
     return (self.key - 3.0) / 12 + 1;
 }
 
+#pragma mark NSObject
+
+- (BOOL)isEqual:(id)object
+{
+    if (![object isKindOfClass:[CPPitch class]]) {
+        return NO;
+    }
+
+    CPPitch *other = object;
+    
+    if (other.frequency != self.frequency) {
+        return NO;
+    }
+
+    if (other.amplitude != self.amplitude) {
+        return NO;
+    }
+
+    if (other.phase != self.phase) {
+        return NO;
+    }
+    
+    return YES;
+}
+
 @end
 
 #pragma mark -

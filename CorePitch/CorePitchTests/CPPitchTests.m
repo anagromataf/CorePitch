@@ -95,4 +95,14 @@
     XCTAssertEqual(pitch.octave, 7);
 }
 
+- (void)testEquality
+{
+    CPPitch *pitchA = [[CPPitch alloc] initWithFrequency:440.0 amplitude:1 phase:CPPitchPhaseBegan];
+    CPPitch *pitchB = [[CPPitch alloc] initWithFrequency:450.0 amplitude:1 phase:CPPitchPhaseBegan];
+    CPPitch *pitchC = [[CPPitch alloc] initWithFrequency:440.0 amplitude:1 phase:CPPitchPhaseBegan];
+    
+    XCTAssertEqualObjects(pitchA, pitchC);
+    XCTAssertNotEqualObjects(pitchA, pitchB);
+}
+
 @end
