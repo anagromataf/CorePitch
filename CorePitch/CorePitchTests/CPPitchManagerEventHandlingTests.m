@@ -17,7 +17,7 @@
 #import <CoreAudio/CoreAudioTypes.h>
 
 #import "CPPitchManager.h"
-#import "CPPitchManager+EventHandling.h"
+#import "CPPitchManager+Private.h"
 
 #import "CPPitch.h"
 #import "CPPitch+Private.h"

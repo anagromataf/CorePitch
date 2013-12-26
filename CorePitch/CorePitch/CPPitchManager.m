@@ -33,6 +33,10 @@
 #pragma mark Tracks
 @property (nonatomic, strong) NSSet *tracks;
 
+#pragma mark General Properties
+@property (nonatomic, assign) double sampleRate;
+@property (nonatomic, assign) NSTimeInterval bufferDuration;
+
 @end
 
 #pragma mark -

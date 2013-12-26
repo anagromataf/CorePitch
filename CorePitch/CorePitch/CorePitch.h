@@ -9,3 +9,4 @@
 #import "CPPitchManager.h"
 #import "CPEvent.h"
 #import "CPPitch.h"
+#import "CPTrack.h"

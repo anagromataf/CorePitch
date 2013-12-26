@@ -28,9 +28,6 @@
 #pragma mark Accessing the Delegate
 @property (assign, nonatomic) id<CPPitchManagerDelegate> delegate;
 
-#pragma mark General Properties
-@property (nonatomic, readonly) double sampleRate;
-
 #pragma mark Managing Pitch Updates
 - (void)startPitchUpdates;
 - (void)stopPitchUpdates;

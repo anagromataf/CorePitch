@@ -12,6 +12,9 @@
 
 @interface CPPitchManager (Private)
 
+#pragma mark General Properties
+@property (nonatomic, readonly) double sampleRate;
+
 #pragma mark Process Samples
 - (NSSet *)processSamples:(AudioBuffer)samples;
 
