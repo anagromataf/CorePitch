@@ -14,10 +14,10 @@
 @protocol CPPitchManagerDelegate <NSObject>
 @optional
 
-#pragma mark Responding to Pitch Events
-- (void)pitchManager:(CPPitchManager *)pitchManager pitchesBegan:(NSSet *)pitches withEvent:(CPEvent *)event;
-- (void)pitchManager:(CPPitchManager *)pitchManager pitchesChanged:(NSSet *)pitches withEvent:(CPEvent *)event;
-- (void)pitchManager:(CPPitchManager *)pitchManager pitchesEnded:(NSSet *)pitches withEvent:(CPEvent *)event;
+#pragma mark Responding to Events
+- (void)pitchManager:(CPPitchManager *)pitchManager tracksBegan:(NSSet *)tracks withEvent:(CPEvent *)event;
+- (void)pitchManager:(CPPitchManager *)pitchManager tracksChanged:(NSSet *)tracks withEvent:(CPEvent *)event;
+- (void)pitchManager:(CPPitchManager *)pitchManager tracksEnded:(NSSet *)tracks withEvent:(CPEvent *)event;
 
 @end
 
@@ -34,5 +34,8 @@
 #pragma mark Managing Pitch Updates
 - (void)startPitchUpdates;
 - (void)stopPitchUpdates;
+
+#pragma mark Tracks
+@property (nonatomic, readonly) NSSet *tracks;
 
 @end

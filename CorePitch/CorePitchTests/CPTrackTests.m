@@ -31,7 +31,7 @@
     NSTimeInterval timespamp = [[NSProcessInfo processInfo] systemUptime];
     
     CPTrack *track = [[CPTrack alloc] init];
-    CPPitch *pitch = [[CPPitch alloc] initWithFrequency:440.0 amplitude:1 phase:CPPitchPhaseStationary];
+    CPPitch *pitch = [[CPPitch alloc] initWithFrequency:440.0 amplitude:1];
     
     [track addPitch:pitch atTimestamp:timespamp];
     
@@ -46,10 +46,10 @@
     
     CPTrack *track = [[CPTrack alloc] init];
 
-    CPPitch *pitchA = [[CPPitch alloc] initWithFrequency:440.0 amplitude:1 phase:CPPitchPhaseStationary];
+    CPPitch *pitchA = [[CPPitch alloc] initWithFrequency:440.0 amplitude:1];
     [track addPitch:pitchA atTimestamp:timespamp - 60];
 
-    CPPitch *pitchB = [[CPPitch alloc] initWithFrequency:450.0 amplitude:1 phase:CPPitchPhaseStationary];
+    CPPitch *pitchB = [[CPPitch alloc] initWithFrequency:450.0 amplitude:1];
     [track addPitch:pitchB atTimestamp:timespamp];
     
     CPPitch *_pitch = track.currentPitch;
