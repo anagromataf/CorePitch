@@ -8,7 +8,12 @@
 
 #include <Accelerate/Accelerate.h>
 
+#import "CPEvent.h"
+#import "CPPitch.h"
+#import "CPTrack.h"
+
 #import "CPPitch+Private.h"
+#import "CPTrack+Private.h"
 
 #import "CPPitchManager.h"
 #import "CPPitchManager+Private.h"
@@ -24,8 +29,10 @@
     float *_processingBuffer;
     float *_magnitudes;
 }
+
 #pragma mark Tracks
 @property (nonatomic, strong) NSSet *tracks;
+
 @end
 
 #pragma mark -
@@ -46,6 +53,8 @@
         _magnitudes        = calloc(sizeof(float), NumberOfProcessingSamples / 2);
         _FFTSetup = vDSP_create_fftsetup(FFTLength, FFT_RADIX2);
         vDSP_hamm_window(_window, NumberOfInputSamples, 0);
+        
+        _tracks = [[NSSet alloc] init];
     }
     return self;
 }
@@ -157,6 +166,56 @@
     [pitches addObject:[[CPPitch alloc] initWithFrequency:frequency amplitude:maxValue]];
     
     return pitches;
+}
+
+#pragma mark Handle Event
+
+- (void)handleEvent:(CPEvent *)event
+{
+    NSMutableSet *changedTracks = [[NSMutableSet alloc] init];
+    
+    NSMutableSet *pitches = [event.allPitches mutableCopy];
+    
+    [self.tracks enumerateObjectsUsingBlock:^(CPTrack *track, BOOL *stop) {
+        
+        CPPitch *pitch = [pitches anyObject];
+        if (pitch) {
+            [pitches removeObject:pitch];
+            [track addPitch:pitch atTimestamp:event.timestamp];
+            [changedTracks addObject:track];
+        } else {
+            *stop = YES;
+        }
+    }];
+    
+    NSMutableSet *newTracks = [[NSMutableSet alloc] init];
+    [pitches enumerateObjectsUsingBlock:^(CPPitch *pitch, BOOL *stop) {
+        CPTrack *track = [[CPTrack alloc] init];
+        [track addPitch:pitch atTimestamp:event.timestamp];
+        [newTracks addObject:track];
+    }];
+    
+    NSMutableSet *endedTracks = [self.tracks mutableCopy];
+    [endedTracks minusSet:newTracks];
+    [endedTracks minusSet:changedTracks];
+    
+    
+    if ([newTracks count] > 0 &&
+        [self.delegate respondsToSelector:@selector(pitchManager:tracksBegan:withEvent:)]) {
+        [self.delegate pitchManager:self tracksBegan:newTracks withEvent:event];
+    }
+    
+    if ([changedTracks count] > 0 &&
+        [self.delegate respondsToSelector:@selector(pitchManager:tracksChanged:withEvent:)]) {
+        [self.delegate pitchManager:self tracksChanged:changedTracks withEvent:event];
+    }
+    
+    if ([endedTracks count] > 0 &&
+        [self.delegate respondsToSelector:@selector(pitchManager:tracksEnded:withEvent:)]) {
+        [self.delegate pitchManager:self tracksEnded:endedTracks withEvent:event];
+    }
+    
+    self.tracks = [changedTracks setByAddingObjectsFromSet:newTracks];
 }
 
 @end

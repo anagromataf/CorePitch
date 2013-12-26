@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0452A92F770E43E68AC8C78E /* libPods-CorePitchTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8AA58FA0A045E385932253 /* libPods-CorePitchTests.a */; };
 		F61FD3B71864588000C9C39B /* CPPitchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F61FD3B61864588000C9C39B /* CPPitchTests.m */; };
-		F61FD3BB18646D2300C9C39B /* CPPitchManager+EventHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = F61FD3BA18646D2300C9C39B /* CPPitchManager+EventHandling.m */; };
 		F61FD3BD186482A800C9C39B /* CPEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F61FD3BC186482A800C9C39B /* CPEventTests.m */; };
 		F64672F3186241990076B8AB /* CPPitchManagerSignalProcessingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F64672F2186241990076B8AB /* CPPitchManagerSignalProcessingTests.m */; };
 		F64672F8186247410076B8AB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F64672F7186247410076B8AB /* Accelerate.framework */; };
@@ -58,8 +57,6 @@
 		9F8AA58FA0A045E385932253 /* libPods-CorePitchTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CorePitchTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C8135D25984F9B8CF6198E /* Pods-CorePitchTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CorePitchTests.xcconfig"; path = "../Pods/Pods-CorePitchTests.xcconfig"; sourceTree = "<group>"; };
 		F61FD3B61864588000C9C39B /* CPPitchTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchTests.m; sourceTree = "<group>"; };
-		F61FD3B918646D2300C9C39B /* CPPitchManager+EventHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPPitchManager+EventHandling.h"; sourceTree = "<group>"; };
-		F61FD3BA18646D2300C9C39B /* CPPitchManager+EventHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CPPitchManager+EventHandling.m"; sourceTree = "<group>"; };
 		F61FD3BC186482A800C9C39B /* CPEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPEventTests.m; sourceTree = "<group>"; };
 		F61FD3BE186498A000C9C39B /* CPEvent+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPEvent+Private.h"; sourceTree = "<group>"; };
 		F64672F2186241990076B8AB /* CPPitchManagerSignalProcessingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchManagerSignalProcessingTests.m; sourceTree = "<group>"; };
@@ -157,8 +154,6 @@
 				F663BD37185F5F0A00A79558 /* CPPitchManager.h */,
 				F663BD38185F5F0A00A79558 /* CPPitchManager.m */,
 				F663BD40185F685100A79558 /* CPPitchManager+Private.h */,
-				F61FD3B918646D2300C9C39B /* CPPitchManager+EventHandling.h */,
-				F61FD3BA18646D2300C9C39B /* CPPitchManager+EventHandling.m */,
 				F663BD3A185F66CD00A79558 /* CPEvent.h */,
 				F61FD3BE186498A000C9C39B /* CPEvent+Private.h */,
 				F663BD3B185F66CD00A79558 /* CPEvent.m */,
@@ -322,7 +317,6 @@
 			files = (
 				F6816AAD186C5A5E005D0787 /* CPTrack.m in Sources */,
 				F663BD39185F5F0A00A79558 /* CPPitchManager.m in Sources */,
-				F61FD3BB18646D2300C9C39B /* CPPitchManager+EventHandling.m in Sources */,
 				F663BD3C185F66CD00A79558 /* CPEvent.m in Sources */,
 				F663BD3F185F66E600A79558 /* CPPitch.m in Sources */,
 			);
