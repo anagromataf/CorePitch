@@ -25,6 +25,10 @@
 #import "CPEvent.h"
 #import "CPEvent+Private.h"
 
+#import "CPTrack.h"
+#import "CPTrack+Private.h"
+
+
 @interface CPPitchManagerEventHandlingTests : XCTestCase
 @property (nonatomic, strong) CPPitchManager *pitchManager;
 @end
@@ -45,104 +49,69 @@
 
 #pragma mark Tests
 
-- (void)testPitchesBeganEvent
+- (void)testMonophonyEvents
 {
-    CPPitch *pitch = [[CPPitch alloc] initWithFrequency:440.0 amplitude:1 phase:CPPitchPhaseBegan];
-    CPEvent *event = [[CPEvent alloc] initWithTimestamp:[[NSProcessInfo processInfo] systemUptime]
-                                                pitches:[NSSet setWithObject:pitch]];
-    
     id <CPPitchManagerDelegate> delegate = mockProtocol(@protocol(CPPitchManagerDelegate));
     self.pitchManager.delegate = delegate;
+ 
+    MKTArgumentCaptor *tracks = [[MKTArgumentCaptor alloc] init];
     
-    [self.pitchManager handleEvent:event];
+    NSTimeInterval timestamp = [[NSProcessInfo processInfo] systemUptime];
     
-    [verifyCount(delegate, times(1)) pitchManager:self.pitchManager
-                                     pitchesBegan:[NSSet setWithObject:pitch]
-                                        withEvent:event];
+    // Track Began
     
-    [verifyCount(delegate, never()) pitchManager:anything()
-                                  pitchesChanged:anything()
-                                       withEvent:anything()];
-    
-    [verifyCount(delegate, never()) pitchManager:anything()
-                                    pitchesEnded:anything()
-                                       withEvent:anything()];
-}
-
-- (void)testPitchesChangedEvent
-{
-    CPPitch *pitch = [[CPPitch alloc] initWithFrequency:440.0 amplitude:1 phase:CPPitchPhaseChanged];
-    CPEvent *event = [[CPEvent alloc] initWithTimestamp:[[NSProcessInfo processInfo] systemUptime]
-                                                pitches:[NSSet setWithObject:pitch]];
-    
-    id <CPPitchManagerDelegate> delegate = mockProtocol(@protocol(CPPitchManagerDelegate));
-    self.pitchManager.delegate = delegate;
-    
-    [self.pitchManager handleEvent:event];
-    
-    
-    [verifyCount(delegate, never()) pitchManager:anything()
-                                    pitchesBegan:anything()
-                                       withEvent:anything()];
+    CPPitch *pitchA = [[CPPitch alloc] initWithFrequency:440.0 amplitude:1];
+    CPEvent *eventA = [[CPEvent alloc] initWithTimestamp:timestamp
+                                                 pitches:[NSSet setWithObject:pitchA]];
+    [self.pitchManager handleEvent:eventA];
     
     [verifyCount(delegate, times(1)) pitchManager:self.pitchManager
-                                   pitchesChanged:[NSSet setWithObject:pitch]
-                                        withEvent:event];
+                                      tracksBegan:[tracks capture]
+                                        withEvent:eventA];
     
-    [verifyCount(delegate, never()) pitchManager:anything()
-                                    pitchesEnded:anything()
-                                       withEvent:anything()];
-}
-
-- (void)testPitchesEndedEvent
-{
-    CPPitch *pitch = [[CPPitch alloc] initWithFrequency:440.0 amplitude:1 phase:CPPitchPhaseEnded];
-    CPEvent *event = [[CPEvent alloc] initWithTimestamp:[[NSProcessInfo processInfo] systemUptime]
-                                                pitches:[NSSet setWithObject:pitch]];
+    // Track Changed
     
-    id <CPPitchManagerDelegate> delegate = mockProtocol(@protocol(CPPitchManagerDelegate));
-    self.pitchManager.delegate = delegate;
-    
-    [self.pitchManager handleEvent:event];
-    
-    [verifyCount(delegate, never()) pitchManager:anything()
-                                    pitchesBegan:anything()
-                                       withEvent:anything()];
-    
-    [verifyCount(delegate, never()) pitchManager:anything()
-                                  pitchesChanged:anything()
-                                       withEvent:anything()];
+    CPPitch *pitchB = [[CPPitch alloc] initWithFrequency:450.0 amplitude:1];
+    CPEvent *eventB = [[CPEvent alloc] initWithTimestamp:timestamp + 60
+                                                 pitches:[NSSet setWithObject:pitchB]];
+    [self.pitchManager handleEvent:eventB];
     
     [verifyCount(delegate, times(1)) pitchManager:self.pitchManager
-                                   pitchesEnded:[NSSet setWithObject:pitch]
-                                        withEvent:event];
-}
-
-- (void)testMixedEvent
-{
-    CPPitch *pitch1 = [[CPPitch alloc] initWithFrequency:440.0 amplitude:1 phase:CPPitchPhaseBegan];
-    CPPitch *pitch2 = [[CPPitch alloc] initWithFrequency:770.0 amplitude:1 phase:CPPitchPhaseChanged];
-    CPPitch *pitch3 = [[CPPitch alloc] initWithFrequency:990.0 amplitude:1 phase:CPPitchPhaseEnded];
+                                    tracksChanged:[tracks value]
+                                        withEvent:eventB];
     
-    CPEvent *event = [[CPEvent alloc] initWithTimestamp:[[NSProcessInfo processInfo] systemUptime]
-                                                pitches:[NSSet setWithObjects:pitch1, pitch2, pitch3, nil]];
+    // Track Changed
     
-    id <CPPitchManagerDelegate> delegate = mockProtocol(@protocol(CPPitchManagerDelegate));
-    self.pitchManager.delegate = delegate;
-    
-    [self.pitchManager handleEvent:event];
+    CPPitch *pitchC = [[CPPitch alloc] initWithFrequency:460.0 amplitude:1];
+    CPEvent *eventC = [[CPEvent alloc] initWithTimestamp:timestamp + 120
+                                                 pitches:[NSSet setWithObject:pitchC]];
+    [self.pitchManager handleEvent:eventC];
     
     [verifyCount(delegate, times(1)) pitchManager:self.pitchManager
-                                     pitchesBegan:[NSSet setWithObject:pitch1]
-                                        withEvent:event];
+                                    tracksChanged:[tracks value]
+                                        withEvent:eventC];
+    
+    // Track Ended
+    
+    CPEvent *eventD = [[CPEvent alloc] initWithTimestamp:timestamp + 180
+                                                 pitches:[NSSet set]];
+    [self.pitchManager handleEvent:eventD];
     
     [verifyCount(delegate, times(1)) pitchManager:self.pitchManager
-                                   pitchesChanged:[NSSet setWithObject:pitch2]
-                                        withEvent:event];
+                                      tracksEnded:[tracks value]
+                                        withEvent:eventD];
     
-    [verifyCount(delegate, times(1)) pitchManager:self.pitchManager
-                                     pitchesEnded:[NSSet setWithObject:pitch3]
-                                        withEvent:event];
+    
+    CPTrack *_track = [[CPTrack alloc] init];
+    [_track addPitch:pitchA atTimestamp:timestamp];
+    [_track addPitch:pitchB atTimestamp:timestamp + 60];
+    [_track addPitch:pitchC atTimestamp:timestamp + 120];
+    
+    
+    XCTAssertEqual([[tracks value] count], 1u);
+    
+    CPTrack *track = [[tracks value] anyObject];
+    XCTAssertEqualObjects(track, _track);
 }
 
 @end

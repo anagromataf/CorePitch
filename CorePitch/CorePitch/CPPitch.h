@@ -8,13 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, CPPitchPhase) {
-    CPPitchPhaseBegan,
-    CPPitchPhaseChanged,
-    CPPitchPhaseStationary,
-    CPPitchPhaseEnded
-};
-
 typedef NS_ENUM(NSUInteger, CPPitchStepType) {
     CPPitchStepTypeUndefined    = 0,
     CPPitchStepTypeC            = 1,
@@ -27,9 +20,6 @@ typedef NS_ENUM(NSUInteger, CPPitchStepType) {
 };
 
 @interface CPPitch : NSObject
-
-@property (nonatomic, readonly) NSTimeInterval timespamp;
-@property (nonatomic, readonly) CPPitchPhase phase;
 
 @property (nonatomic, readonly) double frequency;
 @property (nonatomic, readonly) double amplitude;

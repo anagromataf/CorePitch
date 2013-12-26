@@ -58,10 +58,6 @@
     if (other.amplitude != self.amplitude) {
         return NO;
     }
-
-    if (other.phase != self.phase) {
-        return NO;
-    }
     
     return YES;
 }
@@ -74,13 +70,12 @@
 
 #pragma mark Life-cycle
 
-- (id)initWithFrequency:(double)frequency amplitude:(double)amplitude phase:(CPPitchPhase)phase
+- (id)initWithFrequency:(double)frequency amplitude:(double)amplitude
 {
     self = [super init];
     if (self) {
         _frequency = frequency;
         _amplitude = amplitude;
-        _phase = phase;
         _key = 12 * log2(_frequency / 127.09) + 28.5;
     }
     return self;

@@ -8,7 +8,11 @@
 
 #import "CPEvent.h"
 #import "CPPitch.h"
+#import "CPTrack.h"
 
+#import "CPTrack+Private.h"
+
+#import "CPPitchManager+Private.h"
 #import "CPPitchManager+EventHandling.h"
 
 @implementation CPPitchManager (EventHandling)
@@ -17,35 +21,50 @@
 
 - (void)handleEvent:(CPEvent *)event
 {
-    // Handle CPPitchPhaseBegan
-    if ([self.delegate respondsToSelector:@selector(pitchManager:pitchesBegan:withEvent:)]) {
-        NSSet *pitches = [event.allPitches filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(CPPitch *pitch, NSDictionary *bindings) {
-            return pitch.phase == CPPitchPhaseBegan;
-        }]];
-        if ([pitches count] > 0) {
-            [self.delegate pitchManager:self pitchesBegan:pitches withEvent:event];
+    NSMutableSet *changedTracks = [[NSMutableSet alloc] init];
+    
+    NSMutableSet *pitches = [event.allPitches mutableCopy];
+    
+    [self.tracks enumerateObjectsUsingBlock:^(CPTrack *track, BOOL *stop) {
+        
+        CPPitch *pitch = [pitches anyObject];
+        if (pitch) {
+            [pitches removeObject:pitch];
+            [track addPitch:pitch atTimestamp:event.timestamp];
+            [changedTracks addObject:track];
+        } else {
+            *stop = YES;
         }
+    }];
+    
+    NSMutableSet *newTracks = [[NSMutableSet alloc] init];
+    [pitches enumerateObjectsUsingBlock:^(CPPitch *pitch, BOOL *stop) {
+        CPTrack *track = [[CPTrack alloc] init];
+        [track addPitch:pitch atTimestamp:event.timestamp];
+        [newTracks addObject:track];
+    }];
+    
+    NSMutableSet *endedTracks = [self.tracks mutableCopy];
+    [endedTracks minusSet:newTracks];
+    [endedTracks minusSet:changedTracks];
+    
+    
+    if ([newTracks count] > 0 &&
+        [self.delegate respondsToSelector:@selector(pitchManager:tracksBegan:withEvent:)]) {
+        [self.delegate pitchManager:self tracksBegan:newTracks withEvent:event];
     }
     
-    // Handle CPPitchPhaseChanged
-    if ([self.delegate respondsToSelector:@selector(pitchManager:pitchesChanged:withEvent:)]) {
-        NSSet *pitches = [event.allPitches filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(CPPitch *pitch, NSDictionary *bindings) {
-            return pitch.phase == CPPitchPhaseChanged;
-        }]];
-        if ([pitches count] > 0) {
-            [self.delegate pitchManager:self pitchesChanged:pitches withEvent:event];
-        }
+    if ([changedTracks count] > 0 &&
+        [self.delegate respondsToSelector:@selector(pitchManager:tracksChanged:withEvent:)]) {
+        [self.delegate pitchManager:self tracksChanged:changedTracks withEvent:event];
     }
     
-    // Handle CPPitchPhaseEnded
-    if ([self.delegate respondsToSelector:@selector(pitchManager:pitchesEnded:withEvent:)]) {
-        NSSet *pitches = [event.allPitches filteredSetUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(CPPitch *pitch, NSDictionary *bindings) {
-            return pitch.phase == CPPitchPhaseEnded;
-        }]];
-        if ([pitches count] > 0) {
-            [self.delegate pitchManager:self pitchesEnded:pitches withEvent:event];
-        }
+    if ([endedTracks count] > 0 &&
+        [self.delegate respondsToSelector:@selector(pitchManager:tracksEnded:withEvent:)]) {
+        [self.delegate pitchManager:self tracksEnded:endedTracks withEvent:event];
     }
+    
+    self.tracks = [changedTracks setByAddingObjectsFromSet:newTracks];
 }
 
 @end
