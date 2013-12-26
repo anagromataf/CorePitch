@@ -40,4 +40,20 @@
     XCTAssertEqualObjects(_pitch, pitch);
 }
 
+- (void)testGetCurrentPitch
+{
+    NSTimeInterval timespamp = [[NSProcessInfo processInfo] systemUptime];
+    
+    CPTrack *track = [[CPTrack alloc] init];
+
+    CPPitch *pitchA = [[CPPitch alloc] initWithFrequency:440.0 amplitude:1 phase:CPPitchPhaseStationary];
+    [track addPitch:pitchA atTimestamp:timespamp - 60];
+
+    CPPitch *pitchB = [[CPPitch alloc] initWithFrequency:450.0 amplitude:1 phase:CPPitchPhaseStationary];
+    [track addPitch:pitchB atTimestamp:timespamp];
+    
+    CPPitch *_pitch = track.currentPitch;
+    XCTAssertEqualObjects(pitchB, _pitch);
+}
+
 @end

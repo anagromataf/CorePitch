@@ -12,7 +12,8 @@
 
 @interface CPTrack : NSObject
 
-#pragma mark Getting Track Attributes
+#pragma mark Getting Track Pitches
+@property (nonatomic, readonly) CPPitch *currentPitch;
 - (CPPitch *)pitchAtTimestamp:(NSTimeInterval)timestamp;
 
 @end

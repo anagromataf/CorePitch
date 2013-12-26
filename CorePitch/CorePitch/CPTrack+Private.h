@@ -10,6 +10,7 @@
 
 @interface CPTrack (Private)
 
+#pragma mark Managing Track Pitches
 - (void)addPitch:(CPPitch *)pitch atTimestamp:(NSTimeInterval)timestamp;
 
 @end

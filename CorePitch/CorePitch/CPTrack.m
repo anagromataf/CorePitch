@@ -28,6 +28,12 @@
 
 #pragma mark Getting Track Attributes
 
+- (CPPitch *)currentPitch
+{
+    NSArray *timestamps = [[self.pitches allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    return [self.pitches objectForKey:[timestamps lastObject]];
+}
+
 - (CPPitch *)pitchAtTimestamp:(NSTimeInterval)timestamp
 {
     return [self.pitches objectForKey:@(timestamp)];
@@ -38,6 +44,8 @@
 #pragma mark -
 
 @implementation CPTrack (Private)
+
+#pragma mark Managing Track Pitches
 
 - (void)addPitch:(CPPitch *)pitch atTimestamp:(NSTimeInterval)timestamp
 {
