@@ -153,7 +153,7 @@
     
     double frequency = ((long)index + p) * self.sampleRate / (float)(NumberOfProcessingSamples);
     
-    [pitches addObject:[[CPPitch alloc] initWithFrequency:frequency amplitude:maxValue phase:CPPitchPhaseStationary]];
+    [pitches addObject:[[CPPitch alloc] initWithFrequency:frequency amplitude:maxValue]];
     
     return pitches;
 }

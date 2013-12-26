@@ -10,6 +10,6 @@
 
 @interface CPPitch (Private)
 
-- (id)initWithFrequency:(double)frequency amplitude:(double)amplitude phase:(CPPitchPhase)phase;
+- (id)initWithFrequency:(double)frequency amplitude:(double)amplitude;
 
 @end
