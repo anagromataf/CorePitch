@@ -49,10 +49,12 @@
 
 #pragma mark Tests
 
-- (void)testTrackSingleTrack
+- (void)testMonophonyEvents
 {
     id <CPPitchManagerDelegate> delegate = mockProtocol(@protocol(CPPitchManagerDelegate));
     self.pitchManager.delegate = delegate;
+ 
+    MKTArgumentCaptor *tracks = [[MKTArgumentCaptor alloc] init];
     
     NSTimeInterval timestamp = [[NSProcessInfo processInfo] systemUptime];
     
@@ -64,7 +66,7 @@
     [self.pitchManager handleEvent:eventA];
     
     [verifyCount(delegate, times(1)) pitchManager:self.pitchManager
-                                      tracksBegan:anything()
+                                      tracksBegan:[tracks capture]
                                         withEvent:eventA];
     
     // Track Changed
@@ -75,8 +77,8 @@
     [self.pitchManager handleEvent:eventB];
     
     [verifyCount(delegate, times(1)) pitchManager:self.pitchManager
-                                    tracksChanged:anything()
-                                        withEvent:eventA];
+                                    tracksChanged:[tracks value]
+                                        withEvent:eventB];
     
     // Track Changed
     
@@ -86,8 +88,8 @@
     [self.pitchManager handleEvent:eventC];
     
     [verifyCount(delegate, times(1)) pitchManager:self.pitchManager
-                                    tracksChanged:anything()
-                                        withEvent:eventA];
+                                    tracksChanged:[tracks value]
+                                        withEvent:eventC];
     
     // Track Ended
     
@@ -96,8 +98,8 @@
     [self.pitchManager handleEvent:eventD];
     
     [verifyCount(delegate, times(1)) pitchManager:self.pitchManager
-                                      tracksEnded:anything()
-                                        withEvent:eventA];
+                                      tracksEnded:[tracks value]
+                                        withEvent:eventD];
     
     
     CPTrack *_track = [[CPTrack alloc] init];
@@ -105,9 +107,10 @@
     [_track addPitch:pitchB atTimestamp:timestamp + 60];
     [_track addPitch:pitchC atTimestamp:timestamp + 120];
     
-    XCTAssertEqual([self.pitchManager.tracks count], 1u);
     
-    CPTrack *track = [self.pitchManager.tracks anyObject];
+    XCTAssertEqual([[tracks value] count], 1u);
+    
+    CPTrack *track = [[tracks value] anyObject];
     XCTAssertEqualObjects(track, _track);
 }
 

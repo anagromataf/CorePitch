@@ -24,7 +24,8 @@
     float *_processingBuffer;
     float *_magnitudes;
 }
-
+#pragma mark Tracks
+@property (nonatomic, strong) NSSet *tracks;
 @end
 
 #pragma mark -

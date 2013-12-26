@@ -39,6 +39,23 @@
     return [self.pitches objectForKey:@(timestamp)];
 }
 
+#pragma mark NSObject 
+
+- (BOOL)isEqual:(id)object
+{
+    if (![object isKindOfClass:[CPTrack class]]) {
+        return NO;
+    }
+    
+    CPTrack *other = object;
+    
+    if (![other.pitches isEqualToDictionary:self.pitches]) {
+        return NO;
+    }
+    
+    return YES;
+}
+
 @end
 
 #pragma mark -

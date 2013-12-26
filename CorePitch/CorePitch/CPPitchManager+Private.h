@@ -15,4 +15,7 @@
 #pragma mark Process Samples
 - (NSSet *)processSamples:(AudioBuffer)samples;
 
+#pragma mark Tracks
+@property (nonatomic, strong) NSSet *tracks;
+
 @end
