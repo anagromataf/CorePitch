@@ -42,7 +42,7 @@
 @property (nonatomic, assign) NSTimeInterval bufferDuration;
 
 #pragma mark Audio Queue Management
-@property (nonatomic, assign) BOOL isRunning;
+@property (atomic, assign) BOOL isRunning;
 @property (nonatomic, assign) AudioStreamBasicDescription inputStreamDescription;
 @property (nonatomic, assign) AudioQueueRef inputQueue;
 
@@ -88,12 +88,31 @@
 
 #pragma mark Managing Pitch Updates
 
+- (BOOL)isUpdatingPitches
+{
+    return self.isRunning;
+}
+
 - (void)startPitchUpdates
 {
+    if (self.isRunning) {
+        return;
+    }
+    
+    OSStatus status = AudioQueueStart(self.inputQueue, NULL);
+    NSAssert(status == noErr, @"Failed to start the input queue.");
+    self.isRunning = YES;
 }
 
 - (void)stopPitchUpdates
 {
+    if (!self.isRunning) {
+        return;
+    }
+
+    OSStatus status = AudioQueueStop(self.inputQueue, YES);
+    NSAssert(status == noErr, @"Failed to stop the input queue.");
+    self.isRunning = NO;
 }
 
 #pragma mark Input Queue Life-cycle

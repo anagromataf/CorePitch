@@ -52,4 +52,17 @@
     XCTAssertNotEqual(self.pitchManager.inputQueue, NULL);
 }
 
+- (void)testStartStop
+{
+    XCTAssertEqual(self.pitchManager.isUpdatingPitches, NO);
+    
+    [self.pitchManager startPitchUpdates];
+    
+    XCTAssertEqual(self.pitchManager.isUpdatingPitches, YES);
+    
+    [self.pitchManager stopPitchUpdates];
+    
+    XCTAssertEqual(self.pitchManager.isUpdatingPitches, NO);
+}
+
 @end

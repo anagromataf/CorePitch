@@ -29,6 +29,7 @@
 @property (assign, nonatomic) id<CPPitchManagerDelegate> delegate;
 
 #pragma mark Managing Pitch Updates
+@property (nonatomic, readonly) BOOL isUpdatingPitches;
 - (void)startPitchUpdates;
 - (void)stopPitchUpdates;
 
