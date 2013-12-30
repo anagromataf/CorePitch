@@ -13,7 +13,6 @@
 		F64672F3186241990076B8AB /* CPPitchManagerSignalProcessingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F64672F2186241990076B8AB /* CPPitchManagerSignalProcessingTests.m */; };
 		F64672F8186247410076B8AB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F64672F7186247410076B8AB /* Accelerate.framework */; };
 		F663BD12185F56D100A79558 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F663BD11185F56D100A79558 /* Foundation.framework */; };
-		F663BD17185F56D100A79558 /* CorePitch.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F663BD16185F56D100A79558 /* CorePitch.h */; };
 		F663BD20185F56D100A79558 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F663BD1F185F56D100A79558 /* XCTest.framework */; };
 		F663BD21185F56D100A79558 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F663BD11185F56D100A79558 /* Foundation.framework */; };
 		F663BD23185F56D100A79558 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F663BD22185F56D100A79558 /* UIKit.framework */; };
@@ -27,6 +26,7 @@
 		F66D01941862478200D8AC5B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F64672F7186247410076B8AB /* Accelerate.framework */; };
 		F6816AAD186C5A5E005D0787 /* CPTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = F6816AAC186C5A5E005D0787 /* CPTrack.m */; };
 		F6816AAF186C5A78005D0787 /* CPTrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6816AAE186C5A78005D0787 /* CPTrackTests.m */; };
+		F6816AB9186CEF22005D0787 /* CPPitchManagerInputCallbackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6816AB8186CEF22005D0787 /* CPPitchManagerInputCallbackTests.m */; };
 		F6E52E77186751C600F3CDAB /* CPPitchManagerEventHandlingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6E52E76186751C600F3CDAB /* CPPitchManagerEventHandlingTests.m */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +47,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				F663BD17185F56D100A79558 /* CorePitch.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +82,7 @@
 		F6816AAC186C5A5E005D0787 /* CPTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPTrack.m; sourceTree = "<group>"; };
 		F6816AAE186C5A78005D0787 /* CPTrackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPTrackTests.m; sourceTree = "<group>"; };
 		F6816AB0186C5A94005D0787 /* CPTrack+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPTrack+Private.h"; sourceTree = "<group>"; };
+		F6816AB8186CEF22005D0787 /* CPPitchManagerInputCallbackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchManagerInputCallbackTests.m; sourceTree = "<group>"; };
 		F6E52E76186751C600F3CDAB /* CPPitchManagerEventHandlingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPitchManagerEventHandlingTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +181,7 @@
 			children = (
 				F6E52E76186751C600F3CDAB /* CPPitchManagerEventHandlingTests.m */,
 				F64672F2186241990076B8AB /* CPPitchManagerSignalProcessingTests.m */,
+				F6816AB8186CEF22005D0787 /* CPPitchManagerInputCallbackTests.m */,
 				F61FD3B61864588000C9C39B /* CPPitchTests.m */,
 				F61FD3BC186482A800C9C39B /* CPEventTests.m */,
 				F6816AAE186C5A78005D0787 /* CPTrackTests.m */,
@@ -327,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F64672F3186241990076B8AB /* CPPitchManagerSignalProcessingTests.m in Sources */,
+				F6816AB9186CEF22005D0787 /* CPPitchManagerInputCallbackTests.m in Sources */,
 				F6816AAF186C5A78005D0787 /* CPTrackTests.m in Sources */,
 				F6E52E77186751C600F3CDAB /* CPPitchManagerEventHandlingTests.m in Sources */,
 				F61FD3B71864588000C9C39B /* CPPitchTests.m in Sources */,

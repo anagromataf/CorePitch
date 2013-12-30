@@ -7,6 +7,7 @@
 //
 
 #import <CoreAudio/CoreAudioTypes.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 #import "CPPitchManager.h"
 
@@ -22,3 +23,12 @@
 - (void)handleEvent:(CPEvent *)event;
 
 @end
+
+#pragma mark -
+
+void CPPitchManagerAudioQueueInputCallback(void                                *aqData,
+                                           AudioQueueRef                       inAQ,
+                                           AudioQueueBufferRef                 inBuffer,
+                                           const AudioTimeStamp                *inStartTime,
+                                           UInt32                              inNumPackets,
+                                           const AudioStreamPacketDescription  *inPacketDesc);

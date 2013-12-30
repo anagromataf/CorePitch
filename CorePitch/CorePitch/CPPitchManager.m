@@ -7,11 +7,14 @@
 //
 
 #include <Accelerate/Accelerate.h>
+#import <AudioToolbox/AudioToolbox.h>
+
 
 #import "CPEvent.h"
 #import "CPPitch.h"
 #import "CPTrack.h"
 
+#import "CPEvent+Private.h"
 #import "CPPitch+Private.h"
 #import "CPTrack+Private.h"
 
@@ -223,3 +226,37 @@
 }
 
 @end
+
+#pragma mark -
+
+void CPPitchManagerAudioQueueInputCallback(void                                *aqData,
+                                           AudioQueueRef                       inAQ,
+                                           AudioQueueBufferRef                 inBuffer,
+                                           const AudioTimeStamp                *inStartTime,
+                                           UInt32                              inNumPackets,
+                                           const AudioStreamPacketDescription  *inPacketDesc)
+{
+    CPPitchManager *pitchManager = (__bridge CPPitchManager *)aqData;
+    
+    // For now expecting the number of Packets to be the same as the log2n of the "fftLength"
+    // and checking the size of the input buffer.
+    if (NumberOfInputSamples != inNumPackets) return;
+    if (inBuffer->mAudioDataByteSize != sizeof(float) * NumberOfInputSamples) return;
+    
+    AudioBuffer buffer = {
+        .mNumberChannels = 1,
+        .mDataByteSize = inBuffer->mAudioDataByteSize,
+        .mData = inBuffer->mAudioData
+    };
+    
+    @autoreleasepool {
+        NSSet *pitches = [pitchManager processSamples:buffer];
+        CPEvent *event = [[CPEvent alloc] initWithTimestamp:[[NSProcessInfo processInfo] systemUptime] pitches:pitches];
+        [pitchManager performSelectorOnMainThread:@selector(handleEvent:) withObject:event waitUntilDone:NO];
+    }
+    
+    // Enqueue the used Buffer.
+    if (pitchManager.isRunning == true) {
+        AudioQueueEnqueueBuffer(inAQ, inBuffer, 0, NULL);
+    }
+}
