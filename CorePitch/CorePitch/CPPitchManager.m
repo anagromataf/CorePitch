@@ -24,6 +24,7 @@
 #define FFTLength 12
 #define NumberOfInputSamples (1u << 10)
 #define NumberOfProcessingSamples (1u << 12)
+#define NumberOfBuffer 3
 
 @interface CPPitchManager () {
     FFTSetup _FFTSetup;
@@ -39,6 +40,11 @@
 #pragma mark General Properties
 @property (nonatomic, assign) double sampleRate;
 @property (nonatomic, assign) NSTimeInterval bufferDuration;
+
+#pragma mark Audio Queue Management
+@property (atomic, assign) BOOL isRunning;
+@property (nonatomic, assign) AudioStreamBasicDescription inputStreamDescription;
+@property (nonatomic, assign) AudioQueueRef inputQueue;
 
 @end
 
@@ -62,6 +68,8 @@
         vDSP_hamm_window(_window, NumberOfInputSamples, 0);
         
         _tracks = [[NSSet alloc] init];
+
+        [self setUpInputQueue];
     }
     return self;
 }
@@ -69,6 +77,8 @@
 - (void)dealloc
 {
     vDSP_destroy_fftsetup(_FFTSetup);
+    
+    [self tearDownInputQueue];
     
     free(_magnitudes);
     free(_processingBuffer);
@@ -78,12 +88,102 @@
 
 #pragma mark Managing Pitch Updates
 
+- (BOOL)isUpdatingPitches
+{
+    return self.isRunning;
+}
+
 - (void)startPitchUpdates
 {
+    if (self.isRunning) {
+        return;
+    }
+    
+    OSStatus status = AudioQueueStart(self.inputQueue, NULL);
+    NSAssert(status == noErr, @"Failed to start the input queue.");
+    self.isRunning = YES;
 }
 
 - (void)stopPitchUpdates
 {
+    if (!self.isRunning) {
+        return;
+    }
+
+    OSStatus status = AudioQueueStop(self.inputQueue, YES);
+    NSAssert(status == noErr, @"Failed to stop the input queue.");
+    self.isRunning = NO;
+}
+
+#pragma mark Input Queue Life-cycle
+
+- (void)setUpInputQueue
+{
+    OSStatus status = noErr;
+    
+    // Setup ASBD
+    // ----------
+    
+    AudioStreamBasicDescription streamDescription;
+    
+    streamDescription.mFormatID         = kAudioFormatLinearPCM;
+    streamDescription.mSampleRate       = self.sampleRate;
+    streamDescription.mChannelsPerFrame = 1;
+    streamDescription.mBitsPerChannel   = sizeof(float) * 8;
+    streamDescription.mBytesPerFrame    = streamDescription.mChannelsPerFrame * (streamDescription.mBitsPerChannel / 8);
+    streamDescription.mFramesPerPacket  = 1;
+    streamDescription.mBytesPerPacket   = streamDescription.mFramesPerPacket * streamDescription.mBytesPerFrame;
+    streamDescription.mFormatFlags      = kAudioFormatFlagIsFloat;
+    
+    
+    // Create Input Queue
+    // ------------------
+    
+    AudioQueueRef queue;
+    status = AudioQueueNewInput(&streamDescription,
+                                &CPPitchManagerAudioQueueInputCallback,
+                                (__bridge void *)(self),
+                                NULL, kCFRunLoopCommonModes,
+                                0, &queue);
+    NSAssert(status == noErr, @"Failed to create new input queue.");
+    
+    // Update ASBD with the Properties form the Queue
+    // ----------------------------------------------
+    
+    UInt32 dataFormatSize = sizeof(streamDescription);
+    status = AudioQueueGetProperty(queue,
+                                   kAudioQueueProperty_StreamDescription,
+                                   &streamDescription,
+                                   &dataFormatSize);
+    
+    NSAssert(status == noErr, @"Failed to update basic stream description.");
+    
+    self.inputStreamDescription = streamDescription;
+    self.inputQueue = queue;
+    
+    
+    // Set Buffer Size
+    // ---------------
+    
+    UInt32 bufferByteSize = streamDescription.mBytesPerPacket * NumberOfInputSamples;
+    
+    
+    // Prepare and Buffers
+    // -------------------
+    
+    for (int i = 0; i < NumberOfBuffer; ++i) {
+        AudioQueueBufferRef buffer;
+        status = AudioQueueAllocateBuffer(queue, bufferByteSize, &buffer);
+        NSAssert(status == noErr, @"Failed to allocate buffer.");
+        status = AudioQueueEnqueueBuffer(queue, buffer, 0, NULL);
+        NSAssert(status == noErr, @"Failed to enqueue buffer.");
+    }
+}
+
+- (void)tearDownInputQueue
+{
+    OSStatus status = AudioQueueDispose(self.inputQueue, YES);
+    NSAssert(status == noErr, @"Failed to dispose input queue.");
 }
 
 @end
@@ -256,7 +356,5 @@ void CPPitchManagerAudioQueueInputCallback(void                                *
     }
     
     // Enqueue the used Buffer.
-    if (pitchManager.isRunning == true) {
-        AudioQueueEnqueueBuffer(inAQ, inBuffer, 0, NULL);
-    }
+    AudioQueueEnqueueBuffer(inAQ, inBuffer, 0, NULL);
 }

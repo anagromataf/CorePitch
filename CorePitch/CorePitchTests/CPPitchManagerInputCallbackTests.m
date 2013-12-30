@@ -38,10 +38,22 @@
 #pragma mark -
 
 @interface CPPitchManagerInputCallbackTests : XCTestCase
-
+@property (nonatomic, strong) CPPitchManager *_pitchManager;
 @end
 
 @implementation CPPitchManagerInputCallbackTests
+
+- (void)setUp
+{
+    [super setUp];
+    self._pitchManager = [[CPPitchManager alloc] init];
+}
+
+- (void)tearDown
+{
+    self._pitchManager = nil;
+    [super tearDown];
+}
 
 #pragma mark Tests
 
@@ -50,19 +62,15 @@
     CPPitchManagerStub *pitchManager = [[CPPitchManagerStub alloc] init];
     pitchManager.isRunning = NO;
     
+    AudioQueueBufferRef buffer;
+    OSStatus status = AudioQueueAllocateBuffer(self._pitchManager.inputQueue, sizeof(float) * 1024, &buffer);
+    XCTAssertEqual(status, (OSStatus)noErr);
+    
+    buffer->mAudioDataByteSize = buffer->mAudioDataBytesCapacity;
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
         CPPitchManager *manager = (CPPitchManager *)pitchManager;
-        
-        AudioQueueBuffer aqBuffer = {
-            .mAudioDataBytesCapacity = sizeof(float) * 1024,
-            .mAudioData = calloc(sizeof(float), 1024),
-            .mAudioDataByteSize = sizeof(float) * 1024
-        };
-        
-        CPPitchManagerAudioQueueInputCallback((__bridge void *)(manager), NULL, &aqBuffer, NULL, 1024, NULL);
-        
-        free(aqBuffer.mAudioData);
+        CPPitchManagerAudioQueueInputCallback((__bridge void *)(manager), NULL, buffer, NULL, 1024, NULL);
     });
     
     NSUInteger runs = 0;
