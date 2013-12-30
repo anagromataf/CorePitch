@@ -256,7 +256,5 @@ void CPPitchManagerAudioQueueInputCallback(void                                *
     }
     
     // Enqueue the used Buffer.
-    if (pitchManager.isRunning == true) {
-        AudioQueueEnqueueBuffer(inAQ, inBuffer, 0, NULL);
-    }
+    AudioQueueEnqueueBuffer(inAQ, inBuffer, 0, NULL);
 }

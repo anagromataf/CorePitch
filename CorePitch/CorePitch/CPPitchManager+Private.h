@@ -22,6 +22,10 @@
 #pragma mark Handle Event
 - (void)handleEvent:(CPEvent *)event;
 
+#pragma mark Input Queue
+@property (nonatomic, readonly) AudioStreamBasicDescription inputStreamDescription;
+@property (nonatomic, readonly) AudioQueueRef inputQueue;
+
 @end
 
 #pragma mark -
