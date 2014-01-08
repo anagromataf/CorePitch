@@ -24,6 +24,8 @@
 		F6530CE0187DB2D100DE7055 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6530CDF187DB2D100DE7055 /* Accelerate.framework */; };
 		F6530CE3187DB2D900DE7055 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6530CE1187DB2D900DE7055 /* AudioToolbox.framework */; };
 		F6530CE4187DB2D900DE7055 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6530CE2187DB2D900DE7055 /* CoreAudio.framework */; };
+		F6530CEB187DB57D00DE7055 /* CPDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6530CE9187DB57D00DE7055 /* CPDemoViewController.m */; };
+		F6530CEC187DB57D00DE7055 /* CPDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6530CEA187DB57D00DE7055 /* CPDemoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,9 @@
 		F6530CDF187DB2D100DE7055 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		F6530CE1187DB2D900DE7055 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F6530CE2187DB2D900DE7055 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		F6530CE8187DB57D00DE7055 /* CPDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPDemoViewController.h; sourceTree = "<group>"; };
+		F6530CE9187DB57D00DE7055 /* CPDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPDemoViewController.m; sourceTree = "<group>"; };
+		F6530CEA187DB57D00DE7055 /* CPDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPDemoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +134,7 @@
 			children = (
 				F6530CBB187DB06400DE7055 /* CPAppDelegate.h */,
 				F6530CBC187DB06400DE7055 /* CPAppDelegate.m */,
+				F6530CED187DB58400DE7055 /* Demo View Controller */,
 				F6530CBE187DB06400DE7055 /* Images.xcassets */,
 				F6530CB3187DB06400DE7055 /* Supporting Files */,
 			);
@@ -162,6 +168,16 @@
 				F6530CCE187DB06400DE7055 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F6530CED187DB58400DE7055 /* Demo View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F6530CE8187DB57D00DE7055 /* CPDemoViewController.h */,
+				F6530CE9187DB57D00DE7055 /* CPDemoViewController.m */,
+				F6530CEA187DB57D00DE7055 /* CPDemoViewController.xib */,
+			);
+			name = "Demo View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +258,7 @@
 			files = (
 				F6530CB7187DB06400DE7055 /* InfoPlist.strings in Resources */,
 				F6530CBF187DB06400DE7055 /* Images.xcassets in Resources */,
+				F6530CEC187DB57D00DE7055 /* CPDemoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6530CEB187DB57D00DE7055 /* CPDemoViewController.m in Sources */,
 				F6530CB9187DB06400DE7055 /* main.m in Sources */,
 				F6530CBD187DB06400DE7055 /* CPAppDelegate.m in Sources */,
 			);
