@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Tobias Kräntzer. All rights reserved.
 //
 
-#import "CPPitchManager.h"
-#import "CPEvent.h"
-#import "CPPitch.h"
-#import "CPTrack.h"
+#import <CorePitch/CPPitchManager.h>
+#import <CorePitch/CPEvent.h>
+#import <CorePitch/CPPitch.h>
+#import <CorePitch/CPTrack.h>
