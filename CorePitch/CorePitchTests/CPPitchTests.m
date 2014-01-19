@@ -28,19 +28,19 @@
     CPPitch *pitch;
     
     pitch = [[CPPitch alloc] initWithFrequency:27.5 amplitude:1];
-    XCTAssertEqual(pitch.key, 1);
+    XCTAssertEqual(pitch.key, (NSInteger)1);
     
     pitch = [[CPPitch alloc] initWithFrequency:440.0 amplitude:1];
-    XCTAssertEqual(pitch.key, 49);
+    XCTAssertEqual(pitch.key, (NSInteger)49);
     
     pitch = [[CPPitch alloc] initWithFrequency:261.626 amplitude:1];
-    XCTAssertEqual(pitch.key, 40);
+    XCTAssertEqual(pitch.key, (NSInteger)40);
 
     pitch = [[CPPitch alloc] initWithFrequency:659.255 amplitude:1];
-    XCTAssertEqual(pitch.key, 56);
+    XCTAssertEqual(pitch.key, (NSInteger)56);
     
     pitch = [[CPPitch alloc] initWithFrequency:2093.00 amplitude:1];
-    XCTAssertEqual(pitch.key, 76);
+    XCTAssertEqual(pitch.key, (NSInteger)76);
 }
 
 - (void)testStep
@@ -74,25 +74,25 @@
     CPPitch *pitch;
     
     pitch = [[CPPitch alloc] initWithFrequency:55.0 amplitude:1];
-    XCTAssertEqual(pitch.octave, 1);
+    XCTAssertEqual(pitch.octave, (NSInteger)1);
     
     pitch = [[CPPitch alloc] initWithFrequency:110.0 amplitude:1];
-    XCTAssertEqual(pitch.octave, 2);
+    XCTAssertEqual(pitch.octave, (NSInteger)2);
     
     pitch = [[CPPitch alloc] initWithFrequency:220.0 amplitude:1];
-    XCTAssertEqual(pitch.octave, 3);
+    XCTAssertEqual(pitch.octave, (NSInteger)3);
     
     pitch = [[CPPitch alloc] initWithFrequency:440.0 amplitude:1];
-    XCTAssertEqual(pitch.octave, 4);
+    XCTAssertEqual(pitch.octave, (NSInteger)4);
     
     pitch = [[CPPitch alloc] initWithFrequency:880.0 amplitude:1];
-    XCTAssertEqual(pitch.octave, 5);
+    XCTAssertEqual(pitch.octave, (NSInteger)5);
     
     pitch = [[CPPitch alloc] initWithFrequency:1760.00 amplitude:1];
-    XCTAssertEqual(pitch.octave, 6);
+    XCTAssertEqual(pitch.octave, (NSInteger)6);
     
     pitch = [[CPPitch alloc] initWithFrequency:3520.00 amplitude:1];
-    XCTAssertEqual(pitch.octave, 7);
+    XCTAssertEqual(pitch.octave, (NSInteger)7);
 }
 
 - (void)testEquality

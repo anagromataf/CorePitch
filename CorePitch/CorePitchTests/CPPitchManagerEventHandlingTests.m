@@ -108,7 +108,7 @@
     [_track addPitch:pitchC atTimestamp:timestamp + 120];
     
     
-    XCTAssertEqual([[tracks value] count], 1u);
+    XCTAssertEqual([[tracks value] count], (NSUInteger)1);
     
     CPTrack *track = [[tracks value] anyObject];
     XCTAssertEqualObjects(track, _track);

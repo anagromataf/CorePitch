@@ -44,7 +44,7 @@
     
     XCTAssertEqual(self.pitchManager.inputStreamDescription.mFramesPerPacket, (UInt32)1);
     XCTAssertEqual(self.pitchManager.inputStreamDescription.mChannelsPerFrame, (UInt32)1);
-    XCTAssertEqual(self.pitchManager.inputStreamDescription.mBitsPerChannel, sizeof(float) * 8);
+    XCTAssertEqual(self.pitchManager.inputStreamDescription.mBitsPerChannel, (UInt32)(sizeof(float) * 8));
 }
 
 - (void)testAudioQueue

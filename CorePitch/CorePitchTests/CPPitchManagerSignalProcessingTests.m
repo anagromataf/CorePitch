@@ -57,7 +57,7 @@
     [self fillBuffer:buffer withFrequency:440.0 amplitude:1];
     
     NSSet *pitches = [self.pitchManager processSamples:buffer];
-    XCTAssertEqual([pitches count], 1u);
+    XCTAssertEqual([pitches count], (NSUInteger)1);
     
     CPPitch *pitch = [pitches anyObject];
     XCTAssertEqualWithAccuracy(pitch.frequency, 440.0, 0.1);
